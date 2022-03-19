@@ -13,6 +13,8 @@ console.log(process.env.DISCORD_API_KEY);
 client.once("ready", () => {
   console.log("Ready!");
   console.log(`${client.user.tag}`);
+  //   set the bots activity here
+  client.user.setActivity("my javascript");
 });
 client.on("messageCreate", (message) => {
   //   this is to check if we have an author
@@ -21,16 +23,31 @@ client.on("messageCreate", (message) => {
     console.log("message");
     message.reply("messages");
   }
-  //   console.log(message.content);
 
-  //   console.log("first");
+  if (message.author == client.user) return;
   switch (message.content) {
     case "!meme":
       message.reply("hello world");
+      //   we can aslo put a reaction for each time a case is met cool huh!
+
+      message.react("👍");
+      message.react("🛐");
+      //   message.guild.emojis.forEach((element) => {
+      //     console.log(element);
+      //   });
+      console.log(message.guild.emojis.guild);
+      //   message.guild.emojis.forEach((customEmoji) => {
+      //     console.log(
+      //       `Reacting with custom emoji: ${customEmoji.name} (${customEmoji.id})`
+      //     );
+      //     message.react(customEmoji);
+      //   });
+
       break;
     case "!eye":
       // example to setup a interval to keep the bot running
       msg.channel.send("You are now subscribed to eye reminders.");
+
       interval = setInterval(function () {
         msg.channel.send("Please take an eye break now!").catch(console.error);
       }, 3600000); //every hour
