@@ -35,6 +35,10 @@ client.on("messageCreate", (message) => {
         msg.channel.send("Please take an eye break now!").catch(console.error);
       }, 3600000); //every hour
       break;
+    case "!stop":
+      msg.channel.send("I have stopped eye reminders.");
+      clearInterval(interval);
+      break;
   }
 });
 // Login to Discord with your client's token
